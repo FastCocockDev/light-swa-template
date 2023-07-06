@@ -2,9 +2,9 @@
   "name": "light-static-web-app-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack serve --open --mode development",
+    "build": "webpack --mode development"
   },
   "keywords": [],
   "author": "",

@@ -5,16 +5,20 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  devtool: "source-map",
+  devtool: "inline-source-map",
   entry: "./src/js/main.js",
   output: {
-    path: __dirname + "/dist",
-    filename: "[name].bundle.js"
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
+  optimization: {
+    runtimeChunk: 'single',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src/index.html'),
-      filename: 'index.html'
+      title: 'Development',
+      template: 'src/index.html'
     }),
     new MiniCssExtractPlugin()
   ],
@@ -28,6 +32,10 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 3000
+    static: './dist',
+    watchFiles: ['src/*.html']
+  },
+  optimization: {
+    runtimeChunk: 'single',
   },
 }
